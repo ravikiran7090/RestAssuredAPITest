@@ -1,0 +1,18 @@
+{
+  "id": 122,
+  "category": {
+    "id": 11,
+    "name": "animal"
+  },
+  "name": "animalname",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 22,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
