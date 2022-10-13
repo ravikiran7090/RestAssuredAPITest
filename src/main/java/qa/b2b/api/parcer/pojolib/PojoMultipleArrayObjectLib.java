@@ -1,4 +1,4 @@
-package qa.b2b.api.genericutils.parcer.pojolib;
+package qa.b2b.api.parcer.pojolib;
 
 import lombok.*;
 

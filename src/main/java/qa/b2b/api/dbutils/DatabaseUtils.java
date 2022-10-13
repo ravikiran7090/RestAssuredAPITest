@@ -1,4 +1,4 @@
-package qa.b2b.api.genericutils;
+package qa.b2b.api.dbutils;
 
 import org.postgresql.Driver;
 
@@ -76,21 +76,21 @@ public class DatabaseUtils {
     /**
      * This method will validate the data and return the data
      * @param query
-     * @param columnind
+     * @param columnindex
      * @param expectedData
      * @return
      * @throws SQLException
      */
-    public String getTheDataFromDatabaseAndVerify(String query, int columnind, String expectedData) throws SQLException {
+    public String getTheDataFromDatabaseAndVerify(String query, int columnindex, String expectedData) throws SQLException {
         ResultSet result = connect.createStatement().executeQuery(query);
         boolean flag = false;
         String actualData = null;
         while (result.next()) {
             try {
-                if (result.getString(columnind).equals(expectedData)) {
-                    System.out.println(result.getString(columnind));
+                if (result.getString(columnindex).equals(expectedData)) {
+                    System.out.println(result.getString(columnindex));
                     flag = true;
-                    actualData = result.getString(columnind);
+                    actualData = result.getString(columnindex);
                     break;
                 }
             } catch (SQLException e) {

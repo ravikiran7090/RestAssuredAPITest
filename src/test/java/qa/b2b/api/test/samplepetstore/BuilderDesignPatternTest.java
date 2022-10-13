@@ -1,6 +1,8 @@
 package qa.b2b.api.test.samplepetstore;
 
 import org.testng.annotations.Test;
+import qa.b2b.api.pojoclasses.Student;
+import qa.b2b.api.pojoclasses.StudentBuilder;
 
 public class BuilderDesignPatternTest {
 
@@ -10,8 +12,36 @@ public class BuilderDesignPatternTest {
     // so we go for builder design pattern
 
     @Test
-    public void builderPattern(){
+    public void builderPattern() {
+
+        Student student = StudentBuilder
+                .builder()
+                .setId(2345)
+                .setFirstname("wqert")
+                .setLastname("qwerfer")
+                .setEmail("asdfg")
+                .build();
+        System.out.println(student);
+
+
+    }
+    @Test
+    public void builderPattern1(){
+        Student student = Student
+                .builder1()
+                .setEmail("awerfgt")
+                .perform();
+        System.out.println(student);
 
     }
 
+    @Test
+    public void builderPattern11() {
+        Student student = Student
+                .builder()
+                .email("asdfg")
+                .id(4345)
+                .build();
+        System.out.println(student);
+    }
 }

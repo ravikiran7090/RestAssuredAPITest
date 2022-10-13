@@ -1,10 +1,11 @@
 package qa.b2b.api.listeners;
 
+import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import qa.b2b.api.annotations.FrameworkAnnotations;
-import qa.b2b.api.reports.ExtentLogger;
+import qa.b2b.api.reports.ExtentManager;
 import qa.b2b.api.reports.ExtentReport;
 
 public class TestListenerImpl implements ITestListener {
@@ -12,6 +13,7 @@ public class TestListenerImpl implements ITestListener {
     public void onStart(ITestContext context) {
         ExtentReport.initReport();
     }
+
     @Override
     public void onFinish(ITestContext context) {
         ExtentReport.tearDownReport();
@@ -27,22 +29,24 @@ public class TestListenerImpl implements ITestListener {
 
         String[] category = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotations.class).category();
         ExtentReport.addCategory(category);
+
+        ExtentManager.getTest().log(Status.INFO, result.getMethod().getMethodName() + " is executes");
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentLogger.pass(result.getMethod().getMethodName()+" IS PASS");
+        ExtentManager.getTest().log(Status.PASS, result.getMethod().getMethodName() + " is pass");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ExtentLogger.fail(result.getMethod().getMethodName()+" IS FAIL");
-        ExtentLogger.fail(String.valueOf(result.getThrowable()));
+        ExtentManager.getTest().log(Status.FAIL, result.getThrowable());
+        ExtentManager.getTest().log(Status.FAIL, result.getMethod().getMethodName() + " is fail");
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ExtentLogger.skipped(result.getMethod().getMethodName()+" IS SKIPPED");
+        ExtentManager.getTest().log(Status.SKIP, result.getMethod().getMethodName() + "is skipped");
     }
 
     @Override

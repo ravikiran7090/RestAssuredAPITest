@@ -1,4 +1,4 @@
-package qa.b2b.api.test.parcer.pojo.libtest.serialization;
+package qa.b2b.api.test.parcer.pojolibtest.serialization;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.testng.annotations.Test;

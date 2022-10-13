@@ -1,4 +1,4 @@
-package qa.b2b.api.listeners;
+package qa.b2b.api.annotations;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;

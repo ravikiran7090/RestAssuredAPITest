@@ -1,2 +1,21 @@
-package qa.b2b.api.genericutils;public class ApiUtils {
+package qa.b2b.api.genericutils;
+
+import io.restassured.response.Response;
+import lombok.SneakyThrows;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class ApiUtils {
+    private ApiUtils(){}
+
+    @SneakyThrows
+    public static String readJsonAndGetAsString(String filepath){
+        return new String(Files.readAllBytes(Paths.get(filepath)));
+    }
+
+    @SneakyThrows
+    public static void storeStringAsJsonFile(String filepath, Response response){
+        Files.write(Paths.get(filepath),response.asByteArray());
+    }
 }

@@ -1,15 +1,15 @@
-package qa.b2b.api.test.samplepetstore.reporttest;
+package qa.b2b.api.test.reporttest;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import qa.b2b.api.annotations.FrameworkAnnotations;
-import qa.b2b.api.reports.ExtentLogger;
+import qa.b2b.api.reports.ExtentReport;
 
 import static io.restassured.RestAssured.given;
 
-@Listeners(qa.b2b.api.listeners.ListenerImpl.class)
+@Listeners(qa.b2b.api.listeners.TestListenerImpl.class)
 public class GetResource {
     /*
      * There should be a test case matching this test name in RUNMANAGER and TESTDATA sheet
@@ -20,7 +20,7 @@ public class GetResource {
     @FrameworkAnnotations(author = "Suraj")
     @Test
     public void getResource() {
-        int petid = 123;
+        int petid = 122;
 
         Response responce = given()
                 .pathParam("petID", petid)
@@ -33,7 +33,7 @@ public class GetResource {
                 .statusCode(200)
                 .contentType(ContentType.JSON)
                 .log().all();
-        ExtentLogger.logResponse(responce.asPrettyString());
+        ExtentReport.logResponse(responce.asPrettyString());
 
 
 

@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/Users/surajkumarnaganuri/IdeaProjects/RestAssuredAPITest"><classes><class name="qa.b2b.api.test.parcer.pojo.libtest.deserialization.Deserialization"><methods><include name="deserialization"/></methods></class><class name="qa.b2b.api.test.parcer.pojo.libtest.serialization.PojoArrayObjectTest"><methods><include name="serialization"/></methods></class><class name="qa.b2b.api.test.parcer.pojo.libtest.serialization.PojoLibTest"><methods><include name="serialization"/></methods></class><class name="qa.b2b.api.test.parcer.pojo.libtest.serialization.PojoMultipleArrayObjectTest"><methods><include name="serialization"/></methods></class><class name="qa.b2b.api.test.sample.GetResource"><methods><include name="getResource"/></methods></class><class name="qa.b2b.api.test.sample.PostResourceTest"><methods><include name="postresource"/></methods></class><class name="qa.b2b.api.test.sample.Run"><methods><include name="testRun"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/surajkumarnaganuri/IdeaProjects/RestAssuredAPITest/src/test/java/qa/b2b/api/test/reporttest">
+        <classes>
+            <class name="qa.b2b.api.test.reporttest.GetResource">
+                <methods>
+                    <include name="getResource"/>
+                </methods>
+            </class>
+            <class name="qa.b2b.api.test.reporttest.PostResourceTest">
+                <methods>
+                    <include name="postResource"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

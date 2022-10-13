@@ -3,15 +3,12 @@ package qa.b2b.api.genericutils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import qa.b2b.api.constants.IConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class TestUtils {
 
@@ -23,9 +20,24 @@ public class TestUtils {
     public static List<String> executeStatus = new ArrayList<>();
     public static List<String> invocationCount = new ArrayList<>();
     public static List<String> priority = new ArrayList<>();
+    public static HashMap<Integer, String> rowAndTestCaseMap = new HashMap<Integer, String>();
 
 
+    public static Object getRowNumForTestCase(String testcasename) {
+        Object
+                a = null;
+        for (Map.Entry m : rowAndTestCaseMap.entrySet()) {
+            if (m.getValue().toString().equalsIgnoreCase(testcasename)) {
+                a = m.getKey();
+            }
+        }
+        return a;
+    }
 
+
+    /*
+     * Reads the data from the excel sheet and store the values in respective lists which will be used in annotation transformer class
+     */
     public static void getRunStatus() {
 
         try {
@@ -34,11 +46,11 @@ public class TestUtils {
             workbook.getSheet(IConstants.RUNNERMANAGER_SHEETNAME);
 
             for (int i = 0; i <= getLastRowNum(IConstants.RUNNERMANAGER_SHEETNAME); i++) {
-                testCaseName.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME,i,"TestCaseName"));
-                testCaseDescription.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME,i,"Test Case Description"));
-                executeStatus.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME,i,"Execute"));
-                invocationCount.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME,i,"InvocationCount"));
-                priority.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME,i,"Priority"));
+                testCaseName.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME, i, "TestCaseName"));
+                testCaseDescription.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME, i, "Test Case Description"));
+                executeStatus.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME, i, "Execute"));
+                invocationCount.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME, i, "InvocationCount"));
+                priority.add(getCellContent(IConstants.RUNNERMANAGER_SHEETNAME, i, "Priority"));
             }
 
         } catch (IOException e) {
@@ -181,9 +193,6 @@ public class TestUtils {
     }
 
 
-
-
-
     /*
      * Test Name in the RUNMANAGER should be matching any @Test method in a class file mentioned in testng.xml
      * DataProvider method used to provide data for multiple iterations.
@@ -197,7 +206,7 @@ public class TestUtils {
      */
     @DataProvider(name = "dataProviderForIterations", parallel = false)
     public static Object[][] supplyDataForIterations(Method m) {
-        return getDataForDataprovider(IConstants.EXCEL_SHEETPATH,IConstants.TESTDATA_SHEETNAME, m.getName());
+        return getDataForDataprovider(IConstants.EXCEL_SHEETPATH, IConstants.TESTDATA_SHEETNAME, m.getName());
     }
 
     /*

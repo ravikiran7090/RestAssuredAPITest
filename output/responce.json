@@ -1,1 +1,23 @@
-{"code":1,"type":"error","message":"Pet not found"}
+{
+    "id": 122,
+    "category": {
+        "id": 11,
+        "name": "animal"
+    },
+    "name": "animalname",
+    "photoUrls": [
+        "string1",
+        "String2"
+    ],
+    "tags": [
+        {
+            "id": 22,
+            "name": "qwerty"
+        },
+        {
+            "id": 22,
+            "name": "qwerty"
+        }
+    ],
+    "status": "available"
+}

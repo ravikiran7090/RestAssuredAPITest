@@ -2,7 +2,7 @@ package qa.b2b.api.requestbuilders;
 
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import qa.b2b.api.constants.IConstants;
+import qa.b2b.api.genericutils.PropertyUtils;
 
 import static io.restassured.RestAssured.given;
 
@@ -13,7 +13,8 @@ public class RequestBuilder{
     public static RequestSpecification buildRequestForGetCalls(){
         return given()
                // .baseUri(PropertyUtils.getValue(PropertiesType.BASEURL))
-                .baseUri(IConstants.PROPERTY_FILE_PATH)
+                .baseUri(PropertyUtils.getValue("baseuri"))
+                //.baseUri(IConstants.PROPERTY_FILE_PATH)
                 .log()
                 .all();
     }
