@@ -7,8 +7,8 @@ public class FakerUtils {
 
     private static final Faker faker = new Faker();
 
-    static int getNumber(int startvalue,int endvalue){
-        return faker.number().numberBetween(startvalue, endvalue);
+    static int getNumber(int startValue,int endValue){
+        return faker.number().numberBetween(startValue, endValue);
     }
     static String getFirstName(){
         return faker.name().firstName();
